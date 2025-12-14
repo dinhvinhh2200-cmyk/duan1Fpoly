@@ -32,7 +32,6 @@ const notify = (msg, type = 'warning') => {
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    initClock();
     initTableLogic();
     initProductLogic();    
     initBillActions();     
