@@ -35,10 +35,6 @@
             </div>
 
             <div class="d-flex align-items-center gap-3">
-                <div class="d-none d-md-block text-end me-2">
-                    <div class="fw-bold text-dark" id="clock-time" style="font-size: 1.1rem;">--:--</div>
-                    <div class="small text-muted" id="clock-date">--/--/----</div>
-                </div>
 
                 <div class="user-badge">
                     <img src="https://ui-avatars.com/api/?name=<?php echo htmlspecialchars($_SESSION['full_name']); ?>&background=4e73df&color=fff" class="user-avatar">

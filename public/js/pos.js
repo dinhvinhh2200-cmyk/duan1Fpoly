@@ -33,7 +33,6 @@ const notify = (msg, type = 'warning') => {
 
 document.addEventListener('DOMContentLoaded', function() {
     initClock();
-    initAutoLogout();      // Kích hoạt bộ đếm ngược đăng xuất
     initTableLogic();
     initProductLogic();    
     initBillActions();     
@@ -46,43 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // 3. LOGIC MODULES
 // ============================================================
 
-/**
- * MODULE 0: TỰ ĐỘNG ĐĂNG XUẤT (AUTO LOGOUT)
- * Kiểm tra thời gian còn lại của ca làm việc và reload trang khi hết giờ.
- */
-function initAutoLogout() {
-    const msInput = document.getElementById('auto-logout-ms');
-    if (!msInput) return;
-
-    const remainingMs = parseInt(msInput.value);
-
-    // Nếu có thời gian giới hạn (lớn hơn 0)
-    if (remainingMs > 0) {
-        console.log(`Hệ thống sẽ tự động đăng xuất sau: ${remainingMs / 1000 / 60} phút.`);
-        
-        setTimeout(() => {
-            alert('Ca làm việc của bạn đã kết thúc! Hệ thống sẽ tự động đăng xuất.');
-            // Reload trang để kích hoạt logic kiểm tra trong Controller.php
-            window.location.href = URLROOT + '/auth/logout'; 
-        }, remainingMs);
-    }
-}
-
-/**
- * MODULE 1: ĐỒNG HỒ
- */
-function initClock() {
-    function update() {
-        const now = new Date();
-        const timeEl = document.getElementById('clock-time');
-        const dateEl = document.getElementById('clock-date');
-        
-        if(timeEl) timeEl.innerText = now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
-        if(dateEl) dateEl.innerText = now.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
-    }
-    update();
-    setInterval(update, 1000);
-}
 
 /**
  * MODULE 2: XỬ LÝ BÀN
